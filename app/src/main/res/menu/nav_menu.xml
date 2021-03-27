@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/menu_home"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="Home" />
+        <item
+            android:id="@+id/menu_Location"
+            android:icon="@drawable/icon_location"
+            android:title="Manage Location"
+
+            />
+        <item
+            android:id="@+id/menu_Temprature"
+            android:icon="@drawable/ic_temprature"
+            android:orientation="horizontal"
+            android:title="Temprature"
+            app:actionLayout="@layout/custom_temp_switch">
+
+        </item>
+        <item
+            android:id="@+id/menu_Notification"
+            android:icon="@drawable/ic_notification"
+            android:orientation="horizontal"
+            android:title="Notification"
+            app:actionLayout="@layout/custom_switch" />
+        <item
+            android:id="@+id/menu_Ads"
+            android:icon="@drawable/ic_remove_ads"
+            android:title="Remove ads" />
+        <item
+            android:id="@+id/menu_Feedback"
+            android:icon="@drawable/ic_feedback"
+            android:title="Feedback \u0026 Suggestion" />
+        <item
+            android:id="@+id/menu_Share"
+            android:icon="@drawable/ic_share"
+            android:title="Share" />
+
+    </group>
+</menu>
