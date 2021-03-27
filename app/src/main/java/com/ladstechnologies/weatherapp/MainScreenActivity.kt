@@ -18,10 +18,9 @@ class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_screen)
-
+        navbar()
         switchesnotification()
         switchestemprature()
-        navbar()
     }
 
     private fun switchestemprature() {
@@ -94,12 +93,12 @@ class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     }
 
     fun switchesnotification() {
-        val mNavigationView = findViewById(R.id.navbar) as? NavigationView
-        val navMenu = mNavigationView?.menu
-        val menuItem = navMenu?.findItem(R.id.menu_Notification)
+        val mNavigationView = findViewById(R.id.navbar) as NavigationView
+        val navMenu = mNavigationView.menu
+        val menuItem = navMenu.findItem(R.id.menu_Notification)
 
 
-        menuItem?.actionView?.btn_NotificationSwitch?.setOnCheckedChangeListener { buttonView, isChecked ->
+        menuItem.actionView.btn_NotificationSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
                 toast("Checked")
             } else {
