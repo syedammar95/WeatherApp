@@ -1,8 +1,4 @@
 <resources>
     <string name="app_name">Weather App</string>
-    <string name="title_activity_custom_drawer">CustomDrawerActivity</string>
-
-    <string name="navigation_drawer_open">Drawer Open</string>
-    <string name="navigation_drawer_close">Drawer Closed</string>
 
 </resources>

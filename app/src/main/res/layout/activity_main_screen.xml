@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Main_CL"
     android:layout_width="match_parent"
     android:background="@color/Dark_Blue"
     android:layout_height="match_parent">
@@ -19,36 +19,38 @@
             android:id="@+id/btn_DrawerOpen"
             android:layout_width="@dimen/_26sdp"
             android:layout_height="@dimen/_26sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_15sdp"
             android:src="@drawable/ic_more"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/img_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/icon_location"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_70sdp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/btn_DrawerOpen"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_LocationHeading"
-            android:src="@drawable/icon_location"
-            android:layout_marginTop="@dimen/_60sdp"
-            android:layout_marginStart="@dimen/_80sdp"
-             />
+            />
 
         <TextView
             android:id="@+id/tv_LocationHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_60sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:text="Location"
+            android:gravity="center"
             android:textColor="@color/White"
-            android:textSize="@dimen/_22sdp"
+            android:textSize="@dimen/_24sdp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_DrawerOpen" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -64,85 +66,130 @@
             android:id="@+id/tv_wind"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginStart="@dimen/_50sdp"
-            android:textColor="@color/Light_Grey"
-            android:text="Wind:"
+            android:textColor="@color/white"
+            android:text="Wind"
             android:textStyle="bold"
-            android:textSize="@dimen/_15sdp" />
+            android:textSize="@dimen/_18sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_WindSpeed"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
         <TextView
+            android:id="@+id/tv_WindSpeed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Speed"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_wind"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:text="West North West 12km/h"
-            android:textColor="@color/Light_Grey"
-            android:textSize="@dimen/_15sdp"
-            android:layout_marginStart="@dimen/_5sdp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            />
 
-    <ImageView
-        android:id="@+id/image_forcast"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/CL_2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/ic_launcher_background"
-        android:layout_marginTop="@dimen/_10sdp" />
+        <TextView
+            android:id="@+id/tv_speedUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Km/h"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_18sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_WindSpeed"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/CL_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/image_forcast"
+        android:layout_marginTop="@dimen/_15sdp"
+        app:layout_constraintTop_toBottomOf="@+id/CL_2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <ImageView
+            android:id="@+id/img_sun"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_120sdp"
+            android:src="@drawable/ic_img_sun"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
         <TextView
-            android:id="@+id/tv_Time"
+            android:id="@+id/tv_weatherStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:text="Sky Status"
+            android:textSize="20sp"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@+id/img_sun"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_temprature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Temp"
+            android:textSize="@dimen/_50sdp"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_weatherStatus"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_TimeDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="5:00"
-            android:textColor="@color/White"
+            android:text="5:00pm"
             android:textSize="@dimen/_15sdp"
-            android:layout_marginStart="@dimen/_15sdp"
-            android:layout_marginTop="@dimen/_100sdp"
-            />
-        <ImageView
-            android:id="@+id/icon1_temp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_Time"
-            android:layout_marginStart="@dimen/_15sdp"
-            android:src="@drawable/ic_launcher_background" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/icon1_temp"
-            android:layout_marginStart="@dimen/_15sdp"
-            android:src="@drawable/ic_launcher_background" />
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/_80sdp"
+            android:layout_marginStart="@dimen/_15sdp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
+    <ProgressBar
+        android:id="@+id/loader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/CL_3"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Next Days"
-        android:textColor="@color/White"
-        android:textSize="@dimen/_12sdp"
-        android:layout_marginEnd="@dimen/_15sdp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/errorText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@color/white"
+        android:text="Something went wrong"
+        android:textSize="@dimen/_15sdp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@+id/loader"
+        app:layout_constraintStart_toStartOf="@+id/loader"
+        app:layout_constraintEnd_toEndOf="@+id/loader"
+        app:layout_constraintBottom_toBottomOf="@+id/loader"
+        android:layout_marginTop="@dimen/_15sdp"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
