@@ -2,103 +2,85 @@ package com.ladstechnologies.weatherapp
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.CompoundButton
-import android.widget.Switch
-import android.widget.Toast
-import androidx.appcompat.app.ActionBarDrawerToggle
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.activity_main_screen.*
 import kotlinx.android.synthetic.main.custom_switch.view.*
 import kotlinx.android.synthetic.main.drawer_layout.*
+import kotlinx.android.synthetic.main.drawer_layout.view.*
 
 
-class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
+class MainScreenActivity : AppCompatActivity(),
+    NavigationView.OnNavigationItemSelectedListener,
     CompoundButton.OnCheckedChangeListener {
+
+    private lateinit var mNavigationView: NavigationView
+    private lateinit var drawerLayout: DrawerLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_screen)
-        navbar()
-        switchesnotification()
+        setContentView(R.layout.drawer_layout)
+
+        drawerLayout = findViewById(R.id.drawerlayout)
+
+        btn_DrawerOpen.setOnClickListener {
+            if(!drawerLayout.isDrawerOpen(GravityCompat.START)){
+                drawerLayout.openDrawer(GravityCompat.START)
+            }
+        }
+
         switchestemprature()
+        switchesnotification()
     }
 
     private fun switchestemprature() {
-        val mNavigationView = findViewById(R.id.navbar) as NavigationView
+        mNavigationView = navbar
         val navMenu = mNavigationView.menu
         val menuItem = navMenu.findItem(R.id.menu_Temprature)
-        val switch = menuItem.actionView.findViewById(R.id.menu_Temprature) as Switch
+        val switch = menuItem.actionView.findViewById(R.id.menu_Temprature) as View
 
-        switch?.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) {
-                Toast.makeText(this, "Checked temprature", Toast.LENGTH_SHORT)
-                    .show()
-            } else {
-                Toast.makeText(this, "Unchecked temprature", Toast.LENGTH_SHORT)
-                    .show()
-            }
+        switch.setOnClickListener {
+                toast("Checked ")
         }
-    }
-
-//    override fun onBackPressed() {
-//        if (drawerlayout.isDrawerOpen(GravityCompat.START)) {
-//            drawerlayout.closeDrawer(GravityCompat.START)
-//        } else {
-//            super.onBackPressed()
-//        }
-//    }
-
-    fun navbar() {
-        navbar.bringToFront()
-        var toggle =
-            ActionBarDrawerToggle(this, drawerlayout, toolbar, R.string.nav_app_bar_open_drawer_description, R.string.navigation_drawer_close)
-        toggle.isDrawerIndicatorEnabled = false
-        toggle.setHomeAsUpIndicator(R.drawable.icon_more)
-
-        toggle.setToolbarNavigationClickListener {
-            drawerlayout.openDrawer(GravityCompat.START)
-        }
-        navbar.setNavigationItemSelectedListener(this)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        var id = item.itemId
-        when (id) {
+        when (item.itemId) {
             R.id.menu_home -> {
-                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
-
+                toast("Home")
             }
             R.id.menu_Location -> {
-
+                toast("Location")
 //                val intent = Intent(this, activitlocation::class.java)
 //                closeDrawer()
 //                startActivity(intent)
-
             }
 
             R.id.menu_Ads -> {
-                Toast.makeText(this, "RemoveAdds", Toast.LENGTH_SHORT).show()
-
+                toast("RemoveAdds")
             }
             R.id.menu_Feedback -> {
-                Toast.makeText(this, "Feedback and Suggestions", Toast.LENGTH_SHORT).show()
+                toast("Feedback and Suggestions")
 
             }
             R.id.menu_Share -> {
-                Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show()
-
+                toast("Share")
             }
         }
         return true
     }
 
-    fun switchesnotification() {
-        val mNavigationView = findViewById(R.id.navbar) as NavigationView
+    private fun switchesnotification() {
+        val mNavigationView = findViewById<NavigationView>(R.id.navbar)
         val navMenu = mNavigationView.menu
         val menuItem = navMenu.findItem(R.id.menu_Notification)
 
-
-        menuItem.actionView.btn_NotificationSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+        menuItem.actionView.btn_NotificationSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 toast("Checked")
             } else {
@@ -109,14 +91,8 @@ class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
 
     override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
         if (isChecked) {
-            // If the switch button is on
-
-            // Show the switch button checked status as toast message
             toast("Switch ON")
-
         } else {
-            // If the switch button is off
-
             toast("Switch OFF")
         }
     }
@@ -127,10 +103,3 @@ class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
 //        }
 //    }
 }
-
-
-
-
-
-
-
