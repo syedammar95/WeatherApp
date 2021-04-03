@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Weather App</string>
-
+    <string name="temperature">
+        <big>
+            <b>16°</b>
+        </big>
+        <small>
+            <sup>F</sup>
+        </small>
+    </string>
 </resources>
