@@ -18,8 +18,8 @@
 
         <ImageView
             android:id="@+id/btn_back_Nextdays"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
             android:src="@drawable/ic_back_aarrow"
             android:layout_marginTop="@dimen/_7sdp"
             android:layout_marginStart="@dimen/_10sdp"
@@ -33,6 +33,7 @@
             android:textColor="@color/Dark_Blue"
             android:textSize="25sp"
             android:textStyle="bold"
+            android:layout_marginTop="@dimen/_3sdp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btn_back_Nextdays" />
@@ -40,7 +41,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/CL_Layout2"
-        android:layout_width="@dimen/_250sdp"
+        android:layout_width="@dimen/_280sdp"
         android:layout_height="@dimen/_110sdp"
         android:background="@drawable/second_layout_rounded"
         android:layout_marginTop="@dimen/_35sdp"
@@ -49,12 +50,13 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_15sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
 
             <TextView
                 android:id="@+id/tv_TempToday"
@@ -79,24 +81,14 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_15sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
             <ImageView
                 android:id="@+id/Img_weather"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/icon_moon"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                 />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -111,6 +103,7 @@
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

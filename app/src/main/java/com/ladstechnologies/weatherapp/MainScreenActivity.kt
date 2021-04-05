@@ -15,6 +15,7 @@ import android.text.format.DateFormat
 import android.view.MenuItem
 import android.view.View
 import android.widget.CompoundButton
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -44,12 +45,13 @@ class MainScreenActivity() : AppCompatActivity(),
     private var lat: Double? = null
     private var long: Double? = null
     private var mDate: String? = null
-    private var mProgressBar: ProgressBar? = null
+//    private var mProgressBar: ProgressBar? = null
     var CITY: String = ""
     val API: String = "345ace9c6dab5666e63c9371fba3bb05"
     var permissionArrays = arrayOf(
         Manifest.permission.ACCESS_FINE_LOCATION,
-        Manifest.permission.ACCESS_COARSE_LOCATION)
+        Manifest.permission.ACCESS_COARSE_LOCATION
+    )
         @RequiresApi(Build.VERSION_CODES.M)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,7 +60,7 @@ class MainScreenActivity() : AppCompatActivity(),
 
         //.. current Date and time on main screenActivity
         val tv_TimeDate = findViewById<TextView>(R.id.tv_TimeDate)
-        val sdf = SimpleDateFormat("hh:mm a",Locale.getDefault())
+        val sdf = SimpleDateFormat("hh:mm a", Locale.getDefault())
         val currentDate = sdf.format(Date())
         tv_TimeDate.text = currentDate.toString()
 
@@ -194,16 +196,14 @@ class MainScreenActivity() : AppCompatActivity(),
         }
 
         override fun doInBackground(vararg params: String?): String? {
-            var response: String?
+            val response: String?
             val mUrl =
                 "https://api.openweathermap.org/data/2.5/weather?q=$CITY&units=metric&appid=$API"
-            try {
-                response =
-                    URL(mUrl).readText(
-                        Charsets.UTF_8
-                    )
+            response = try {
+                URL(mUrl).readText(
+                    Charsets.UTF_8)
             } catch (e: Exception) {
-                response = null
+                null
             }
             return response
         }
@@ -226,14 +226,59 @@ class MainScreenActivity() : AppCompatActivity(),
                 findViewById<TextView>(R.id.tv_temprature).text = temp
                 findViewById<TextView>(R.id.tv_WindSpeed).text = windSpeed
 
+                val image = findViewById<ImageView>(R.id.Img_weather)
+                when (weatherDescription) {
+                    "clear sky" -> {
+                        image.setImageResource(R.drawable.sun_clear_sky)
+                    }
+                    "few clouds","broken clouds", -> {
+                        image.setImageResource(R.drawable.few_clouds_day)
+                    }
+                    "overcast clouds" -> {
+                        image.setImageResource(R.drawable.overcast)
+                    }
+                    "scattered clouds" -> {
+                        image.setImageResource(R.drawable.cloudy)
+                    }
+                    "thunderstorm","light thunderstorm","heavy thunderstorm",
+                    "ragged thunderstorm","" -> {
+                        image.setImageResource(R.drawable.thunderstorm)
+                    }
+                    "thunderstorm with light rain","thunderstorm with rain",
+                    "thunderstorm with heavy rain","thunderstorm with light drizzle",
+                    "thunderstorm with drizzle","thunderstorm with heavy drizzle" -> {
+                        image.setImageResource(R.drawable.thundr_rain)
+                    }
+                    "rain","shower rain","light rain","moderate rain",
+                    "heavy intensity rain","very heavy rain","extreme rain",
+                    "light intensity shower rain","heavy intensity shower rain",
+                    "ragged shower rain" -> {
+                        image.setImageResource(R.drawable.rain_and_shower_rain)
+                    }
+                    "drizzle","light intensity drizzle","drizzle rain",
+                    "shower rain and drizzle","heavy shower rain and drizzle" -> {
+                        image.setImageResource(R.drawable.drizzle_rain)
+                    }
+                    "snow","light snow","Heavy snow", "Light shower sleet",
+                    "Light rain and snow","Rain and snow","Light shower snow",
+                    "Shower snow","Heavy shower snow" -> {
+                        image.setImageResource(R.drawable.snow)
+                    }
+                    "Sleet" ->{
+                        image.setImageResource(R.drawable.snow_sleet)
+                    }
+                    "mist", "smoke", "Haze", "fog", "squalls"-> {
+                        image.setImageResource(R.drawable.mist)
+                    }
+                }
+
                 //* Views populated, Hiding the loader, Showing the main design *//
                 findViewById<ProgressBar>(R.id.loader).visibility = View.GONE
-                findViewById<ConstraintLayout>(R.id.Main_CL).visibility = View.VISIBLE
+                findViewById<ConstraintLayout>(R.id.Main_CL).visibility = View.VISIBLE }
 
-            } catch (e: Exception) {
+                catch (e: Exception) {
                 findViewById<ProgressBar>(R.id.loader).visibility = View.GONE
-                findViewById<TextView>(R.id.errorText).visibility = View.VISIBLE
-            }
+                findViewById<TextView>(R.id.errorText).visibility = View.VISIBLE }
         }
     }
 
@@ -309,5 +354,4 @@ class MainScreenActivity() : AppCompatActivity(),
             toast("Notifications OFF")
         }
     }
-
 }
