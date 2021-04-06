@@ -12,7 +12,6 @@
             android:id="@+id/menu_Location"
             android:icon="@drawable/icon_location"
             android:title="Manage Location"
-
             />
         <item
             android:id="@+id/menu_Temprature"
@@ -28,10 +27,10 @@
             android:orientation="horizontal"
             android:title="Notification"
             app:actionLayout="@layout/custom_switch" />
-        <item
-            android:id="@+id/menu_Ads"
-            android:icon="@drawable/ic_remove_ads"
-            android:title="Remove ads" />
+<!--        <item-->
+<!--            android:id="@+id/menu_Ads"-->
+<!--            android:icon="@drawable/ic_remove_ads"-->
+<!--            android:title="Remove ads" />-->
         <item
             android:id="@+id/menu_Feedback"
             android:icon="@drawable/ic_feedback"

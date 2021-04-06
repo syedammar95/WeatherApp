@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -55,8 +56,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            >
+            app:layout_constraintEnd_toEndOf="parent">
 
             <TextView
                 android:id="@+id/tv_TempToday"
@@ -64,10 +64,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/temperature"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_20sdp"
+                android:textSize="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -75,31 +76,31 @@
                 android:text="Sunday"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_18sdp"
                 app:layout_constraintTop_toBottomOf="@+id/tv_TempToday"
                 app:layout_constraintStart_toStartOf="@+id/tv_TempToday"
-                app:layout_constraintEnd_toEndOf="@+id/tv_TempToday"
-                app:layout_constraintBottom_toBottomOf="parent"
-                />
+                app:layout_constraintEnd_toEndOf="@+id/tv_TempToday" />
 
             <ImageView
-                android:id="@+id/Img_weather"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/Img_weather1"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
                 android:src="@drawable/icon_moon"
+                android:layout_marginEnd="@dimen/_25sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                 />
+                app:layout_constraintEnd_toEndOf="parent"/>
 
             <TextView
+                android:id="@+id/tv_weather_status1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Status"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_15sdp"
-                app:layout_constraintTop_toBottomOf="@+id/Img_weather"
-                app:layout_constraintStart_toStartOf="@+id/Img_weather"
-                app:layout_constraintEnd_toEndOf="@+id/Img_weather"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Img_weather1"
+                app:layout_constraintStart_toStartOf="@+id/Img_weather1"
+                app:layout_constraintEnd_toEndOf="@+id/Img_weather1"
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -108,7 +109,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="@dimen/_250sdp"
+        android:layout_width="@dimen/_280sdp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_15sdp"
         app:layout_constraintTop_toBottomOf="@+id/CL_Layout2"
